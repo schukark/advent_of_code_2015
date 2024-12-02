@@ -1,0 +1,15 @@
+WHITESPACE = _{ " " }
+
+value = @{ ASCII_DIGIT+ }
+variable = @{ ASCII_ALPHA_LOWER+ }
+
+operand = @{ value | variable }
+
+bin_op = @{ "AND" | "OR" | "LSHIFT" | "RSHIFT" }
+binary_op = { operand ~ bin_op ~ operand }
+
+not_op = { "NOT" ~ operand }
+
+left_side = { binary_op | not_op | operand }
+line = { left_side ~ "->" ~ variable ~ NEWLINE? }
+file = { SOI ~ line* ~ EOI }

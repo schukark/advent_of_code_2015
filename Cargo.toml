@@ -5,3 +5,5 @@ edition = "2021"
 
 [dependencies]
 md5 = "0.7.0"
+pest = "2.7.14"
+pest_derive = "2.7.14"
